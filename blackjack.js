@@ -39,16 +39,36 @@ Deck.prototype = {
     }
   },
 
-  dealCard: function() {
-
+  dealCard: function(hand) {
+    var card = this.cards.splice(0,1)[0];
+    hand.cards.push(card);
   }
 }
 
+///////////////////////////
+//        Hand           //
+///////////////////////////
+
+function Hand() {
+  this.cards = []
+}
+
+Hand.prototype = {
+  constructor: Hand
+}
+
+///////////////////////////
+//        Play           //
+///////////////////////////
+
+hand = new Hand();
 
 deck = new Deck(1);
 deck.buildDeck();
+deck.dealCard(hand);
 
 console.log(deck.cards.length);
+console.log(hand.cards);
 
 
 
