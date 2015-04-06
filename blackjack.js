@@ -30,7 +30,11 @@ Card.prototype = {
   constructor: Card, // resets constructor to be Card instead of Object
 
   value: function() { // create shared methods for all card instances
-    console.log(this.suit);
+    if (this.rank === 'J' || this.rank === 'Q' || this.rank === 'K') {
+      return 10
+    } else {
+      return parseInt(this.rank);
+    }
   }
 }
 
@@ -52,7 +56,7 @@ Deck.prototype = {
 
   buildDeck: function() {
     for (var r = 0; r < this.ranks.length; r++) {
-      for (var s = 0; s < this.suits.length ; s++) {
+      for (var s = 0; s < this.suits.length; s++) {
         this.cards.push(new Card(this.ranks[r], this.suits[s]));
       }
     }
